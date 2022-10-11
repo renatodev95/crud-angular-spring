@@ -16,19 +16,21 @@ export class CoursesComponent implements OnInit {
   courses$: Observable<Course[]>;
   displayedColumns = ['name', 'category'];
 
-  constructor(private coursesService: CoursesService, public dialog: MatDialog) {
-    this.courses$ = this.coursesService.listAll()
-    .pipe(
-      catchError(error => {
+  constructor(
+    private coursesService: CoursesService,
+    public dialog: MatDialog
+  ) {
+    this.courses$ = this.coursesService.listAll().pipe(
+      catchError((error) => {
         this.onError('Erro ao carregar cursos.');
         return of([]); // retornando um Observable de array vazio para que o spinner pare de ser renderizado
-    })
+      })
     );
   }
 
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
-      data: errorMsg
+      data: errorMsg,
     });
   }
 
