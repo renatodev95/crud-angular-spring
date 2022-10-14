@@ -7,6 +7,7 @@ crud-angular/.angular/
 /tmp
 /out-tsc
 .angular/cache/
+.idea/
 # Only exists if Bazel was run
 /bazel-out
 
@@ -46,3 +47,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+crud-spring/.idea/sonarlint/issuestore/index.pb
