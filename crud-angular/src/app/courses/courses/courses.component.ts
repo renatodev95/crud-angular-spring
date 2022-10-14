@@ -16,13 +16,12 @@ import { CoursesService } from '../services/courses.service';
 export class CoursesComponent implements OnInit {
 
   courses$: Observable<Course[]>;
-  displayedColumns = ['name', 'category', 'actions'];
 
   constructor(
     private coursesService: CoursesService,
     public dialog: MatDialog,
     private router: Router, // router para usar o 'navigate'
-    private route: ActivatedRoute // route paga pegarmos a rota ativa no momento
+    private route: ActivatedRoute // route paga pegarmos a rota ativa no mo mento
   ) {
     this.courses$ = this.coursesService.listAll().pipe(
       catchError((error) => {
