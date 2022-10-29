@@ -48,3 +48,4 @@ testem.log
 .DS_Store
 Thumbs.db
 crud-spring/.idea/sonarlint/issuestore/index.pb
+crud-spring/.vscode/settings.json
