@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { first, tap, delay } from 'rxjs/operators';
+import { first, tap, delay, take } from 'rxjs/operators';
 
 import { Course } from '../model/course';
 
@@ -9,7 +9,7 @@ import { Course } from '../model/course';
   providedIn: 'root',
 })
 export class CoursesService {
-  
+
   private readonly API = 'api/courses';
 
   constructor(private httpClient: HttpClient) {}
@@ -20,6 +20,10 @@ export class CoursesService {
       // delay(5000),
       tap((courses) => console.log(courses))
     );
+  }
+
+  loadById(id: string): Observable<Course> {
+    return this.httpClient.get<Course>(`${this.API}/${id}`).pipe(first());
   }
 
   // recebendo um objeto parcial de Curso
