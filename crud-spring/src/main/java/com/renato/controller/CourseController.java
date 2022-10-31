@@ -33,4 +33,7 @@ public class CourseController {
     public Course create(@RequestBody Course course) {
         return courseRepository.save(course);
     }
+    
+    @PutMapping
+    @ResponseStatus(code = HttpStatus.OK)
 }
