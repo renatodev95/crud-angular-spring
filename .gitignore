@@ -50,3 +50,5 @@ Thumbs.db
 crud-spring/.idea/sonarlint/issuestore/index.pb
 crud-spring/.vscode/settings.json
 /crud-spring/.idea/sonarlint
+
+/crud-angular/.vscode
