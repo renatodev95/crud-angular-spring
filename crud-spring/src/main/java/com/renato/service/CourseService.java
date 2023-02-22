@@ -2,6 +2,7 @@ package com.renato.service;
 
 import com.renato.dto.CourseDTO;
 import com.renato.dto.mapper.CourseMapper;
+import com.renato.enums.Category;
 import com.renato.exception.RecordNotFoundException;
 import com.renato.repository.CourseRepository;
 import jakarta.validation.Valid;
@@ -42,7 +43,7 @@ public class CourseService {
         return courseRepository.findById(id)
                 .map(recordFound -> {
                     recordFound.setName(courseDTO.name());
-                    recordFound.setCategory(courseDTO.category());
+                    recordFound.setCategory(Category.FRONT_END);
                     return courseMapper.toDTO(courseRepository.save(recordFound));
                 })
                 .orElseThrow(() -> new RecordNotFoundException(id));

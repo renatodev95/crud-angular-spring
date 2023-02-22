@@ -1,5 +1,6 @@
 package com.renato;
 
+import com.renato.enums.Category;
 import com.renato.model.Course;
 import com.renato.repository.CourseRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +21,7 @@ public class CrudSpringApplication {
 			courseRepository.deleteAll();
 			Course c = new Course();
 			c.setName("Angular com Spring");
-			c.setCategory("Front-end");
+			c.setCategory(Category.BACK_END);
 			courseRepository.save(c);
 		};
 	}
