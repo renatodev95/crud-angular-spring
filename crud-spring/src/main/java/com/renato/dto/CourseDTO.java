@@ -1,12 +1,13 @@
 package com.renato.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Length;
 
-@Getter
-@Setter
-public class CourseDTO {
-    private Long id;
-    private String name;
-    private String category;
+public record CourseDTO(
+        @JsonProperty("_id") Long id,
+        @NotNull @NotBlank @Length(min = 5, max = 100) String name,
+        @NotNull @NotBlank @Length(max = 10) @Pattern(regexp = "Back-end|Front-end") String category) {
 }
