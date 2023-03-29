@@ -23,7 +23,7 @@ public class CourseController {
     }
 
     @GetMapping
-    public @ResponseBody List<CourseDTO> listAll() {
+    public List<CourseDTO> listAll() {
         return courseService.list();
     }
 
