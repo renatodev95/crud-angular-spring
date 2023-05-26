@@ -13,12 +13,9 @@ import { CoursesService } from '../../services/courses.service';
   styleUrls: ['./course-form.component.scss'],
 })
 export class CourseFormComponent implements OnInit {
-
   form = this.formBuilder.group({
     _id: [''],
-    name: ['', [Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(100)]],
+    name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)],],
     category: ['', [Validators.required]],
   });
 
@@ -32,12 +29,12 @@ export class CourseFormComponent implements OnInit {
 
   ngOnInit(): void {
     const course: Course = this.route.snapshot.data['course'];
-//    console.log(course);
     this.form.setValue({
       _id: course._id,
       name: course.name,
-      category: course.category
-    })
+      category: course.category,
+    });
+    console.log(course);
   }
 
   onSubmit() {
@@ -59,12 +56,16 @@ export class CourseFormComponent implements OnInit {
     }
 
     if (field?.hasError('minlength')) {
-      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 5;
+      const requiredLength = field.errors
+        ? field.errors['minlength']['requiredLength']
+        : 5;
       return `Tamanho mínimo precisa ser de ${requiredLength} caracteres.`;
     }
 
     if (field?.hasError('maxlength')) {
-      const requiredLength = field.errors ? field.errors['maxlength']['requiredLength'] : 100;
+      const requiredLength = field.errors
+        ? field.errors['maxlength']['requiredLength']
+        : 100;
       return `Tamanho máximo excedido de ${requiredLength} caracteres.`;
     }
 

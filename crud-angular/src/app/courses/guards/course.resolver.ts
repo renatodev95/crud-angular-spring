@@ -21,6 +21,6 @@ export class CourseResolver implements Resolve<Course> {
     }
     // Quando for a rota de "criação" também vai passar por esse resolver, mas aí não haverá o parâmetro 'id',
     // portanto será retornado um objeto de Course com os dados vazios.
-    return of({_id: '', name: '', category: ''});
+    return of({_id: '', name: '', category: '', lessons: []});
   }
 }
