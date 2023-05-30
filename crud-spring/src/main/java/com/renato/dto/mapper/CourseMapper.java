@@ -19,7 +19,7 @@ public class CourseMapper {
         List<LessonDTO> lessons = course.getLessons()
                 .stream()
                 .map(lesson -> new LessonDTO(lesson.getId(), lesson.getName(), lesson.getYoutubeUrl()))
-                .collect(Collectors.toList());
+                .toList();
         return new CourseDTO(course.getId(), course.getName(), course.getCategory().getValue(), lessons);
     }
 
