@@ -84,7 +84,6 @@ export class CourseFormComponent implements OnInit {
     } else {
       alert('form invalido');
     }
-
   }
 
   onCancel() {
