@@ -57,6 +57,20 @@ export class CourseFormComponent implements OnInit {
     });
   }
 
+  getLessonsFormArray() {
+    return (<UntypedFormArray>this.form.get('lessons')).controls;
+  }
+
+  addNewLesson() {
+    const lessons = this.form.get('lessons') as UntypedFormArray;
+    lessons.push(this.createLesson());
+  }
+
+  removeLesson(index: number) {
+    const lessons = this.form.get('lessons') as UntypedFormArray;
+    lessons.removeAt(index);
+  }
+
   onSubmit() {
     this.service.save(this.form.value).subscribe(
       (result) => this.onSuccess(),
@@ -90,10 +104,6 @@ export class CourseFormComponent implements OnInit {
     }
 
     return 'Erro';
-  }
-
-  getLessonsFormArray() {
-    return (<UntypedFormArray>this.form.get('lessons')).controls;
   }
 
   private onSuccess() {
