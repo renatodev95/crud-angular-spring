@@ -47,8 +47,7 @@ public class CourseService {
                     recordFound.getLessons().clear();
                     course.getLessons().forEach(recordFound.getLessons()::add);
                     return courseMapper.toDTO(courseRepository.save(recordFound));
-                })
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                }).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
     public void delete(@NotNull @Positive Long id) {
